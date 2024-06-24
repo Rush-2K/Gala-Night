@@ -1,0 +1,29 @@
+.main { /* New parent container class */
+    display: grid;
+    grid-template-columns: 1fr; /* Two columns */
+    grid-gap: 10px; /* Optional gap between grid items */
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-right: 20px;
+}
+
+.right {
+    display: flex;
+    /* grid-column: 2; */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    font-size: 1.5rem; /* Adjust font size as needed */
+    /* writing-mode: vertical-rl; */
+    color: aliceblue;
+    /* border-radius: 15px; */
+    /* Other styles for the right button */
+}
+
+.stage { /* New parent container class */
+    display: grid;
+    /* grid-template-columns: 4fr 1fr; Two columns */
+    grid-gap: 10px; /* Optional gap between grid items */
+    padding: 20px;
+    background-color: rgb(146, 18, 18);
+    border-radius: 20px;
+}

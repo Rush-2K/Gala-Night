@@ -1,0 +1,8 @@
+.main { /* New parent container class */
+    display: grid;
+    /* grid-template-columns: 4fr 1fr; Two columns */
+    grid-gap: 10px; /* Optional gap between grid items */
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+}

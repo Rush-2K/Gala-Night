@@ -1,0 +1,20 @@
+.pax {
+    appearance: textfield; /* Ensure the number input field displays correctly */
+    -webkit-appearance: none; /* Remove spin buttons on Chrome, Safari, Edge, and Opera */
+    -moz-appearance: textfield; /* Remove spin buttons on Firefox */
+}
+
+/* Add styles for better visibility and user experience */
+.pax::-webkit-inner-spin-button,
+.pax::-webkit-outer-spin-button {
+    -webkit-appearance: inner-spin-button;
+    appearance: inner-spin-button;
+}
+
+.pax {
+    width: 100px;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
