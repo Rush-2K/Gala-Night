@@ -4,7 +4,7 @@ export async function addUserDetails(data) {
 
     try{
         const jsonData = JSON.stringify(data);
-        console.log(data)
+        // console.log(data)
         const response = await fetch(API_URL+"api/user", {
             method: 'POST',
             body: jsonData,
@@ -17,8 +17,6 @@ export async function addUserDetails(data) {
     
         if(!response.ok) {
             throw new Error('Failed to update user data')
-    
-            return resData.message;
         }
     
         console.log('User data added successfully:', resData);

@@ -2,7 +2,7 @@ var cors = require("cors");
 const mongoose = require("mongoose");
 var express = require("express");
 // var MongoClient = require("mongodb").MongoClient;
-var CONNECTION_STRING = "<connection-string>";
+var CONNECTION_STRING = "mongodb+srv://admin:wezP1L6ogxMBRV4e@cluster0.ubvvsig.mongodb.net/Gala-Night?retryWrites=true&w=majority&appName=Cluster0";
 const PORT = 5038;
 const User = require('./models/userDetails.model.js')
 
