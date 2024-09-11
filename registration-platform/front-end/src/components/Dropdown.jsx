@@ -33,12 +33,7 @@ export default function Example() {
             </a>
           </MenuItem>
           <MenuItem>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
-            >
-              License
-            </a>
+            <h1 className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900">Test</h1>
           </MenuItem>
           <form action="#" method="POST">
             <MenuItem>

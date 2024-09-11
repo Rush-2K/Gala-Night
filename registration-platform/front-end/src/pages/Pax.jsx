@@ -47,7 +47,7 @@ export default function Pax() {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Register
                         </h1>
-                        <Example />
+                        
                         <label htmlFor="quantity-input" className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Choose quantity:</label>
                         <Input 
                             label="Additional Pax"

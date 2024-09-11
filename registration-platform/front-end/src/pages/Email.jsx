@@ -7,35 +7,47 @@ import Error from "../components/Error";
 
 export default function Email() {
     const fullname = useRef();
-    // const staffid = useRef();
-    // const email = useRef();
-    // const grade = useRef();
-    // const dept = useRef();
+    const staffid = useRef();
+    const email = useRef();
+    const grade = useRef();
+    const dept = useRef();
+
     const navigate = useNavigate();
     
     const [fullNameIsValid, setFullNameIsValid] = useState({
         check: true,
         msg: ''
     });
-    const [staffIdIsValid, setStaffIdIsValid] = useState(true);
-    const [emailIsValid, setEmailIsValid] = useState(true);
-    const [gradeIsValid, setGradeIsValid] = useState(true);
-    const [deptIsValid, setDeptIsValid] = useState(true);
+    const [staffIdIsValid, setStaffIdIsValid] = useState({
+        check: true,
+        msg: ''
+    });
+    const [emailIsValid, setEmailIsValid] = useState({
+        check: true,
+        msg: ''
+    });
+    const [gradeIsValid, setGradeIsValid] = useState({
+        check: true,
+        msg: ''
+    });
+    const [deptIsValid, setDeptIsValid] = useState({
+        check: true,
+        msg: ''
+    });
 
     const [fullNameErr, setFullNameErr] = useState('');
-    // let fullNameErr = '';
-    let staffIdErr = '';
-    let emailErr = '';
-    let gradeErr = '';
-    let deptErr = '';
+    const [staffIdErr, setStaffIdErr] = useState('');
+    const [emailErr, setEmailErr] = useState('');
+    const [gradeErr, setGradeErr] = useState('');
+    const [deptErr, setDeptErr] = useState('');
 
     function handleSave() {
         // console.log("handleSave")
         const enteredFullName = fullname.current.value;
-        // const enteredStaffId = staffid.current.value;
-        // const enteredEmail = email.current.value;
-        // const enteredGrade = grade.current.value;
-        // const enteredDept = dept.current.value;
+        const enteredStaffId = staffid.current.value;
+        const enteredEmail = email.current.value;
+        const enteredGrade = grade.current.value;
+        const enteredDept = dept.current.value;
 
         // const userData = {
         //     name: enteredFullName,
@@ -44,47 +56,75 @@ export default function Email() {
         //     grade: enteredGrade,
         //     department: enteredDept,
         //   };
-        let hasError = false;
+        let hasErrorFullName = false;
+        let hasErrorStaffId = false;
+        let hasErrorEmail = false;
+        let hasErrorGrade = false;
+        let hasErrorDept = false;
+
         if (enteredFullName.trim() === '') {
-            hasError = true;
+            hasErrorFullName = true;
             setFullNameIsValid({
                 check: false,
                 msg: 'FullName is required'
             })
-        
         }else{
-            hasError = false;
+            hasErrorFullName = false;
             setFullNameIsValid({
                 check: true,
                 msg: ''
             })
         }
-        //   if (enteredStaffId.trim() === '') {
-        //     staffIdErr = 'Staff ID is required.';
-        //     setStaffIdIsValid(false)
-        //   }else{
-        //     setStaffIdIsValid(true);
-        //   }
-        //   if (enteredEmail.trim() === '' || !/\S+@\S+\.\S+/.test(enteredEmail)) {
-        //     emailErr = 'Please enter a valid email address.';
-        //     setEmailIsValid(false);
-        //   }else{
-        //     setEmailIsValid(true);
-        //   }
-        //   if (enteredGrade.trim() === ''){
-        //     gradeErr = 'Grade is required';
-        //     setGradeIsValid(false);
-        //   }else{
-        //     setGradeIsValid(true);
-        //   }
-        //   if (enteredDept.trim() === ''){
-        //     deptErr = 'Department is required';
-        //     setDeptIsValid(false);
-        //   }else{
-        //     setDeptIsValid(true);
-        //   }
+        if (enteredStaffId.trim() === '') {
+            hasErrorStaffId = true;
+            setStaffIdIsValid({
+                check: false,
+                msg: 'StaffId is required'
+            })
+        }else{
+            hasErrorStaffId = false;
+            setStaffIdIsValid({
+                check: true,
+                msg: ''
+            })
+        }
+        if (enteredEmail.trim() === '' || !/\S+@\S+\.\S+/.test(enteredEmail)) {
+            hasErrorEmail = true;
+            setEmailErr({
+                check: false,
+                msg: 'Email is required'
+            })
+        }else{
+            hasErrorEmail = false;
+            setEmailIsValid({
+                check: true,
+                msg: ''
+            })
+        }
+        if (enteredGrade.trim() === ''){
+            hasErrorGrade = true;
+            setGradeErr({
+                check: false,
+                msg: 'Grade is required'
+            })
+        }else{
+            hasErrorGrade = false;
+            setGradeIsValid({
+                check: true,
+                msg: ''
+            })
+        }
+        if (enteredDept.trim() === ''){
+            hasErrorDept = true;
+            setDeptIsValid({
+                check: false,
+                msg: 'Department is required'
+            })
+        }else{
+        setDeptIsValid(true);
+        }
 
-        if(!hasError){
+        if(!hasErrorFullName && !hasErrorStaffId && !hasErrorEmail && !hasErrorGrade && !hasErrorDept){
             console.log('success!! no error')
             navigate('/pax')
         }else{
@@ -110,34 +150,48 @@ export default function Email() {
                             errCheck={fullNameIsValid.check}
                             errText={fullNameIsValid.msg}
                         />
-                        {/* <Input 
+                        <Input 
                             label="StaffID" 
                             type="text" 
                             id="staffid" 
                             ref={staffid}
-                            errText={staffIdErr}
+                            errCheck={staffIdIsValid.check}
+                            errText={staffIdIsValid.msg}
                         />
                         <Input 
                             label="Email" 
                             type="email" 
                             id="email" 
                             ref={email}
-                            errText={emailErr}
+                            errCheck={emailIsValid.check}
+                            errText={emailIsValid.msg}
                         />
                         <Input 
                             label="Grade" 
                             type="text" 
                             id="grade" 
                             ref={grade}
-                            errText={gradeErr}
-                        />
+                            errCheck={gradeIsValid.check}
+                            errText={gradeIsValid.msg}
+                            />
                         <Input 
                             label="Department" 
                             type="text" 
                             id="dept" 
                             ref={dept}
-                            errText={deptErr}
-                        /> */}
+                            errCheck={deptIsValid.check}
+                            errText={deptIsValid.msg}
+                        />
+                        <label for="paxNo" className="block mb-2 text-s font-bold tracking-wide uppercase text-stone-300 font-sans-Roboto">Additional Pax</label>
+
+                        <select name="pax" id="pax">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                         <div className="flex items-center">
                             <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                             <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">

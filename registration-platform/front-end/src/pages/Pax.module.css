@@ -18,3 +18,27 @@
     border-radius: 4px;
     font-size: 1em;
 }
+
+/* Styling the select element */
+select {
+    background-color: #f4f4f4; /* Light gray background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Add padding inside the select box */
+    font-size: 16px; /* Set font size */
+    color: #333; /* Text color */
+    width: 200px; /* Set width of the select box */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Styling the label */
+label {
+    font-size: 16px; /* Font size for the label */
+    margin-bottom: 8px; /* Space below the label */
+    display: block; /* Ensure label is on its own line */
+}
+
+/* Option styling (note: styling options directly is limited) */
+option {
+    padding: 10px; /* Add padding inside options */
+}
