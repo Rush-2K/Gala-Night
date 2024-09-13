@@ -90,7 +90,7 @@ export default function Email() {
         }
         if (enteredEmail.trim() === '' || !/\S+@\S+\.\S+/.test(enteredEmail)) {
             hasErrorEmail = true;
-            setEmailErr({
+            setEmailIsValid({
                 check: false,
                 msg: 'Email is required'
             })
@@ -103,7 +103,7 @@ export default function Email() {
         }
         if (enteredGrade.trim() === ''){
             hasErrorGrade = true;
-            setGradeErr({
+            setGradeIsValid({
                 check: false,
                 msg: 'Grade is required'
             })
@@ -121,12 +121,19 @@ export default function Email() {
                 msg: 'Department is required'
             })
         }else{
-        setDeptIsValid(true);
+            hasErrorGrade = false
         }
 
+        
+
         if(!hasErrorFullName && !hasErrorStaffId && !hasErrorEmail && !hasErrorGrade && !hasErrorDept){
-            console.log('success!! no error')
-            navigate('/pax')
+            localStorage.setItem('fullName', enteredFullName);
+            localStorage.setItem('staffID', enteredStaffId);
+            localStorage.setItem('email', enteredEmail);
+            localStorage.setItem('grade', enteredGrade);
+            localStorage.setItem('dept', enteredDept);
+            console.log('success!! no error');
+            navigate('/seat');
         }else{
             console.log('failed to submit, got error')
         }
@@ -182,7 +189,7 @@ export default function Email() {
                             errCheck={deptIsValid.check}
                             errText={deptIsValid.msg}
                         />
-                        <label for="paxNo" className="block mb-2 text-s font-bold tracking-wide uppercase text-stone-300 font-sans-Roboto">Additional Pax</label>
+                        <label htmlFor="paxNo" className="block mb-2 text-s font-bold tracking-wide uppercase text-stone-300 font-sans-Roboto">Additional Pax</label>
 
                         <select name="pax" id="pax">
                             <option value="0">0</option>
