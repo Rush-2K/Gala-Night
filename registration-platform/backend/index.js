@@ -4,7 +4,8 @@ var express = require("express");
 // var MongoClient = require("mongodb").MongoClient;
 var CONNECTION_STRING = "mongodb+srv://admin:wezP1L6ogxMBRV4e@cluster0.ubvvsig.mongodb.net/Gala-Night?retryWrites=true&w=majority&appName=Cluster0";
 const PORT = 5038;
-const User = require('./models/userDetails.model.js')
+const User = require('./models/userDetails.model.js');
+const Table = require('./models/tables.model.js');
 
 const app = express();
 
@@ -62,16 +63,6 @@ app.delete('/api/user/:id', async (req, res) => {
   }
 })
 
-//get all result
-app.get('/api/users', async (req, res) => {
-  try{
-    const user = await User.find({});
-    res.status(200).json(user)
-}catch(error){
-    res.status(500).json({message: error.message})
-}
-})
-
 //get specific id
 app.get('/api/user/:id', async (req, res) => {
   try{
@@ -82,6 +73,29 @@ app.get('/api/user/:id', async (req, res) => {
     res.status(500).json({message: error.message})
 }
 })
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//get all table
+app.get('/api/tables', async (req, res) => {
+  try{
+    const tables = await Table.find({});
+    res.status(200).json(tables);
+  }catch(error){
+      res.status(500).json({message: error.message})
+  }
+});
+
+//add tables
+app.post('/api/addTable', async (req, res) => {
+  try{
+      console.log("add data body: ", req.body)
+      const data = await Table.create(req.body);
+      res.status(200).json(data);
+  }catch(error){
+      res.status(500).json({message: error.message})
+  }
+});
 
 //CONNECT TO DATABASE USING MONGOOSE
 mongoose.connect(CONNECTION_STRING).then(() => {

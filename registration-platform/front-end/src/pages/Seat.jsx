@@ -1,14 +1,25 @@
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import classes from './Seat.module.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Seat() {
     const navigate = useNavigate(); // Hook for navigation
+    const [isLoading, setIsLoading] = useState(false);
+    const [fetchedTable, setFetchedTable] = useState();
+    const [error, setError] = useState();
 
     const handleClick = (buttonIndex) => {
         // Replace with the actual path to your target page
         navigate('/your-target-page'); // Redirect to the other page
     };
+
+    useEffect(() => {
+        async function fetchTable() {
+            setIsLoading(true);
+            const response = await fetch()
+        }
+    })
     
 
     return (
